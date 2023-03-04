@@ -1,0 +1,92 @@
+.registerPage-contenedor__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    min-width: 400px;
+    min-height: 500px;
+    max-height: 700px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Path: src\auth\css\registerPage.css */
+.registerPage-contenedor__form__title{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.registerPage-form_inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.registerPage-form_inputs input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+}
+
+
+.registerPage-email_pass{
+    display: flex;
+
+}
+
+.registerPage-row_classmate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+
+
+.registerPage-btn_register{
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+
+.registerPage-form_inputs h2{
+    width: 100%;
+    text-align: start;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+}
