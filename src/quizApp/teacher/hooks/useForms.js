@@ -59,6 +59,7 @@ export const useForms = (initialForm = {}) => {
     }
     dispatch(addQuestion(formState));
     Swal.fire("Correcto", "Pregunta guardada", "success");
+    console.log(initialForm);
     setFormState(initialForm);
   };
   return {

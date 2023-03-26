@@ -28,3 +28,4 @@ export const DropDownButton = ({ changeInputs, categories, label}) => {
     </div>
   );
 };
+  

@@ -1,4 +1,4 @@
-.registerPage-contenedor__form{
+.registerPage-contenedor__form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     height: 100%;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 20px;
     margin: 0 auto;
     margin-top: 20px;
@@ -22,24 +22,24 @@
 }
 
 /* Path: src\auth\css\registerPage.css */
-.registerPage-contenedor__form__title{
+.registerPage-contenedor__form__title {
     font-size: 2rem;
     font-weight: 600;
     color: #000;
     margin-bottom: 20px;
 }
 
-.registerPage-form_inputs{
+.registerPage-form_inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 15px;
 }
 
-.registerPage-form_inputs input{
+.registerPage-form_inputs input {
     width: 100%;
     height: 40px;
     border: 1px solid #000;
@@ -49,25 +49,43 @@
     font-size: 1rem;
     font-weight: 500;
     color: #000;
-}
-
-
-.registerPage-email_pass{
-    display: flex;
 
 }
 
-.registerPage-row_classmate{
+
+.registerPage-email_pass {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
     gap: 10px;
 }
 
 
-.registerPage-btn_register{
+.registerPage_classMates {
+    width: 100%;
+}
+
+.registerPage-row_classMate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.registerPage-row_classMate .isText {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.registerPage-row_classMate .isCheck {
+    width: 10%;
+}
+
+
+
+.registerPage-btn_register {
     width: 100%;
     height: 40px;
     border: none;
@@ -82,11 +100,32 @@
 
 
 
-.registerPage-form_inputs h2{
+.registerPage-form_inputs h2 {
     width: 100%;
     text-align: start;
     font-size: 1rem;
     font-weight: 600;
     color: #000;
     margin-bottom: 20px;
+}
+
+
+
+.registerPage-link_login {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+.registerPage-link_login:hover{
+    font-size: 24px;
+    text-decoration: none;
+    color: #2236e9e0;
+    scale: .9;
+    transition: 0.5s;
+}
+
+.btn-disable{
+    background-color: #dad6d64d;
+    color: black;
+    cursor: not-allowed;
 }

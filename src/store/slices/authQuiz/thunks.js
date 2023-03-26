@@ -1,5 +1,7 @@
-import { checkingCredentials, login } from "./AuthSlice";
+import { checkingCredentials, login , statusRegister} from "./AuthSlice";
 import { serviceAuthLogin } from "./services";
+import { serviceRegister} from "./services";
+
 
 export const checkingAuthentication = () => {
   return async (dispatch) => {
@@ -17,5 +19,54 @@ export const quizLogin = ({ email, password }) => {
       dispatch(login({ status: "no-authenticated", error: res.error }));
     }
     return res;
+  };
+};
+
+
+
+
+export const registerTeam = (data) => {
+  const {
+    nameAdviser,
+    emailAdviser,
+    passwordAdviser,
+    phoneAdviser,
+    institutionAdviser,
+    idrol,
+    students,
+    nameTeam,
+  } = data;
+  const dataTeam = {
+    nameAdviser,
+    email: emailAdviser,
+    pass: passwordAdviser,
+    institution: institutionAdviser,
+    phone: phoneAdviser,
+    idrol,
+    nameTeam,
+    students: [
+      {
+        name: students[0].student1,
+        isLeader: students[0].isLeader,
+      },
+      {
+        name: students[1].student2,
+        isLeader: students[1].isLeader,
+      },
+      {
+        name: students[2].student3,
+        isLeader: students[2].isLeader,
+      },
+    ],
+  };
+
+  return async (dispatch) => {
+    dispatch(statusRegister(true));
+    const data = await serviceRegister(dataTeam);
+    if (data) {
+      dispatch(statusRegister(false));
+    }
+
+    return data;
   };
 };

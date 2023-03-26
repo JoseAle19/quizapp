@@ -37,7 +37,7 @@ export const CreateQuestion = () => {
           Agregar preguntas
         </h1>
       <div>
-      <DropDownButton changeInputs={changeInputs} categories={categories} label={'Seleciona una categoria'}/>
+      <DropDownButton changeInputs={changeInputs} categories={categories} label={categories.length <1 ? `No hay categorias` : `Seleciona una categoria`}/>
 
       </div>
         <form className="m-2 ">

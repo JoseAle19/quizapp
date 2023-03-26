@@ -1,5 +1,6 @@
 import { quizApi } from "../../../Api/QuizApi";
 import { setCategories, startLoading } from "./categoriesSlice";
+import { getCategoriesService } from "./service";
 
 export const getCategories = () => {
     return async (dispatch) => {
@@ -7,7 +8,7 @@ export const getCategories = () => {
         
         //Peticion al api hacia  el endpoint de categorias
         // endPoint de llas categorias http://localhost:4000/categories/getAllCategories
-        const  {data} = await quizApi.get('categories/getAllCategories')
+        const  data = await getCategoriesService()
         dispatch(setCategories(data))
   };
 };

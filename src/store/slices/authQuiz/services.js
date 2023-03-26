@@ -21,3 +21,24 @@ export const serviceAuthLogin = async (email, password) => {
     };
   }
 };
+
+
+
+export const serviceRegister = async (dataRegister) => {
+  
+  try {
+    const { data } = await quizApi.post(
+      "adviser-team/add-adviser-and-team",
+      {
+        ...dataRegister
+      }
+    );    
+    return data;
+  } catch (error) {
+    return {
+        status: false,
+        error: error.response.data.err?.errors || error.response.data
+    }
+  }
+};
+

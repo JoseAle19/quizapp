@@ -9,8 +9,6 @@ import {  quizLogin } from "../../store/slices/authQuiz/thunks";
 
 export const useFormAuth = (initialState = {}) => {
   const [formState, setFormState] = useState(initialState);
-  // navigate 
-  const navigate = useNavigate();
   // redux
   const dispatch = useDispatch();
   const data = useSelector((state) => state.auth);

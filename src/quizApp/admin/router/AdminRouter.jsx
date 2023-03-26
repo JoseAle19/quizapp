@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AdminDashBoardPage, HistoryPage} from "../pages/";
+import { AdminDashBoardPage, HistoryPage} from "../pages";
 
 export const AdminRouter = () => {
   return (

@@ -3,7 +3,7 @@ import { servicesGetQuestions, servicesQuestions } from "./service";
 
 
 
-// Inserta una pregunta en la base de datos
+// Inserta una pregunta en la base de datosl
 export const addQuestion = (dataQuestions) => {
   return async (dispatch) => {
     const data = await servicesQuestions(dataQuestions);
