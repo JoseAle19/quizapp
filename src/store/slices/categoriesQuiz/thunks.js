@@ -1,4 +1,3 @@
-import { quizApi } from "../../../Api/QuizApi";
 import { setCategories, startLoading } from "./categoriesSlice";
 import { getCategoriesService } from "./service";
 

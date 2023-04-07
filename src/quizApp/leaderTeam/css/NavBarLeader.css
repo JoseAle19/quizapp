@@ -1,0 +1,136 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100%;
+    width: 250px;
+    background-color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.sidebar-nav {
+    padding-top: 60px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.nav-link:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.DashBoardPage-container {
+    /* background-color: aqua; */
+    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+}
+
+
+.leader {
+    background-color: rgba(69, 168, 69, 0.767);
+    padding: 20px;
+    width: 80%;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+
+
+
+.Leadertest-container {
+    margin-left: 250px;
+
+}
+
+.Leadertest-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.Leadertest-test{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+.Leadertest-test-container{
+    background-color: rgb(213, 228, 213);
+    padding: 20px;
+    width: 80%;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.Leadertest-btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(69, 168, 69);
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+}

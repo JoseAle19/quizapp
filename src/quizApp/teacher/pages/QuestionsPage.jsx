@@ -7,11 +7,11 @@ import { getCategories } from "../../../store/slices/categoriesQuiz/thunks";
 import { useForms } from "../hooks/useForms";
 import { CardDataQuestions } from "../components/CardDataQuestions";
 export const QuestionsPage = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getQuestions());
   }, []);
-  const dispatch = useDispatch();
   const { questions } = useSelector((state) => state.questions);
 
   const { categories } = useSelector((state) => state.categories);

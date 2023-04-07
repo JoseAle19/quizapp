@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import "../css/loginPage.css";
 import { useFormAuth } from "../hooks/";
 import { Link} from "react-router-dom";
+import { Loading } from "../../ui/components/Loading";
 export const Login = () => {
   // redux
   const { status } = useSelector((state) => state.auth);
@@ -16,9 +17,7 @@ export const Login = () => {
       <div className="login-contenedor">
         <div className="login-form">
           {status === "checking" && (
-            <div className="login-checking">
-              <div className="lds-dual-ring"></div>
-            </div>
+            <Loading/>
           )}
           <form>
             <h1>Inicio de sesión</h1>

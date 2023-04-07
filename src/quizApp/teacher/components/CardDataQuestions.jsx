@@ -2,7 +2,7 @@
 import Modal from "react-modal";
 import { useState } from "react";
 import { CardQuestions } from "./CardQuestions";
-import '../css/CardQuestionUpdate.css'
+import "../css/CardQuestionUpdate.css";
 const modalCustomStyles = {
   content: {
     top: "50%",
@@ -43,11 +43,11 @@ export const CardDataQuestions = ({ question }) => {
               </div>
               <div className="card_questionpage-menuright">
                 <img
-                className="card_questionpage-edit_img"
+                  className="card_questionpage-edit_img"
                   onClick={() => {
                     openModal();
                   }}
-                  src="../../../public/edit.png"
+                  src="../../../edit.png"
                   alt=""
                 />
                 <Modal
@@ -60,7 +60,7 @@ export const CardDataQuestions = ({ question }) => {
                   <CardQuestions name={"pregunta"} placeholder={"Pregunta"} />
                 </Modal>
 
-                <img src="../../../public/delete.png" alt="" />
+                <img src="../../../delete.png" alt="" />
               </div>
             </div>
             <div className="card_questionpage-titleQ">
@@ -71,7 +71,8 @@ export const CardDataQuestions = ({ question }) => {
               <span>Respuestas</span>
               <hr />
               <div className="card_questionpage-gridanswers">
-                {JSON.parse(question.answers).answers.map((answer, index) => {
+                {/* {console.log(question.answers)} */}
+                {question.answers.answers.map((answer, index) => {
                   return (
                     <p
                       className={

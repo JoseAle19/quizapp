@@ -6,6 +6,7 @@ export const serviceAuthLogin = async (email, password) => {
       email,
       password,
     });
+    console.log('bien');
     return data;
   } catch (error) {
     const { data, status } = error.response || "sas";
@@ -15,6 +16,7 @@ export const serviceAuthLogin = async (email, password) => {
     if (status === 400) {
       return { status: false, error: data?.err?.errors || data };
     }
+    console.log("error", error);
     return {
       status: false,
       error: "No se pudo establecer una conexion con el servidor",

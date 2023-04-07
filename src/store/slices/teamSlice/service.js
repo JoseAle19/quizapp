@@ -1,11 +1,9 @@
 import { quizApi } from "../../../Api/QuizApi";
 
-
-// TODO: Falta hacer el servicio para el getTeamForAdviser no esta en el backend y ni terminado
-
-export const getTeamForAdviser = async (data) => {
+export const getTeamForAdviser = async (id) => {
   try {
-    const { data } = await quizApi.get(`team/getTeamForAdviser/${data}`);
+    const data = await quizApi.get(`adviser-team/getTeamById/${id}`);
+    
     return data;
   } catch (error) {
     return {
@@ -13,4 +11,4 @@ export const getTeamForAdviser = async (data) => {
       error: error.response.data.err?.errors || error.response.data,
     };
   }
-}
+};
