@@ -1,4 +1,4 @@
-import "../css/Loading.css";
+import "../css/loading.css";
 export const Loading = () => {
   return (
     <div className="login-checking">
