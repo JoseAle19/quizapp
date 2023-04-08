@@ -1,7 +1,8 @@
-import { checkingCredentials, login , statusRegister} from "./AuthSlice";
+import { removeStateCategory } from "../categoriesQuiz/thunks";
+import { removeStateTets } from "../testSlice/thunks";
+import { checkingCredentials, login, statusRegister } from "./AuthSlice";
 import { serviceAuthLogin } from "./services";
-import { serviceRegister} from "./services";
-
+import { serviceRegister } from "./services";
 
 export const checkingAuthentication = () => {
   return async (dispatch) => {
@@ -14,16 +15,26 @@ export const quizLogin = ({ email, password }) => {
     dispatch(checkingCredentials());
     const res = await serviceAuthLogin(email, password);
     if (res.status) {
-      dispatch(login({ status: "authenticated", user: {   ...res.user, token: res.userToken } }));
+      dispatch(
+        login({
+          status: "authenticated",
+          user: { ...res.user, token: res.userToken },
+        })
+      );
     } else {
       dispatch(login({ status: "no-authenticated", error: res.error }));
     }
     return res;
   };
 };
-
-
-
+// Cerrar sesión y elimanr todo el state de cada uno de os reducers
+export const quizLogout = () => {
+  return async (dispatch) => {
+    dispatch(login({ status: "no-authenticated", user: null }));
+    // dispatch(removeStateCategory())
+    // dispatch(removeStateTets())
+  };
+};
 
 export const registerTeam = (data) => {
   const {

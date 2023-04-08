@@ -1,3 +1,4 @@
+import { Logout } from "../../../ui/components/Logout";
 import { NavTeacher } from "../ui/NavTeacher";
 
 export const TeacherDashBoradPage = () => {
@@ -9,6 +10,7 @@ export const TeacherDashBoradPage = () => {
           ¡Bienvenido a QuizApp! Selecciona una opción del menú para interactuar
           con la plataforma.
         </p>
+      <Logout/>
       </div>
     </>
   );

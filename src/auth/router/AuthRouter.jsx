@@ -2,6 +2,7 @@ import { Route, Routes, Navigate} from "react-router-dom";
 import { Login } from "../pages/Login";
 import { RegisterPage } from "../pages/RegisterPage";
 export const AuthRouter = () => {
+  console.log("auth router");
   return (
     <Routes>
         <Route path="/login" element={<Login />} />

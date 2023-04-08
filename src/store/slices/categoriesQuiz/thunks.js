@@ -11,3 +11,10 @@ export const getCategories = () => {
         dispatch(setCategories(data))
   };
 };
+
+
+export const removeStateCategory = () => {
+  return async (dispatch) => {
+    dispatch(setCategories([]));
+  };
+}

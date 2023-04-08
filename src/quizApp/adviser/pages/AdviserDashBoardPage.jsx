@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTeamForAdviserById } from "../../../store/slices/teamSlice/thunks";
 import '../css/dashBoard.css'
+import { Logout } from "../../../ui/components/Logout";
 export const AdviserDashBoardPage = () => {
   const dispatch = useDispatch();
   const { team, isLoading } = useSelector((state) => state.team);
@@ -13,6 +14,7 @@ export const AdviserDashBoardPage = () => {
 
   return (
     <div>
+      
       <h1>Pantalla del asesor</h1>
       {isLoading ? (
         <h1>Cargando</h1>
@@ -33,6 +35,7 @@ export const AdviserDashBoardPage = () => {
                 </div>
             ))}
           </ul>
+          <Logout/>
         </div>
       )}
     </div>

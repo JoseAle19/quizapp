@@ -3,6 +3,7 @@ import { Login } from "../auth/pages/Login";
 import { PrivateRouter, PublicRouter } from "./";
 import { QuizRouter } from "../quizApp/router/QuizRouter";
 import { AuthRouter } from "../auth/router/AuthRouter";
+import { Logout } from "../ui/components/Logout";
 export const AppRouter = () => {
   return (
     <Routes>
@@ -23,6 +24,7 @@ export const AppRouter = () => {
           </PublicRouter>
         }
       />
+
 
       <Route path="*" element={<h1>Error 404</h1>} />
     </Routes>

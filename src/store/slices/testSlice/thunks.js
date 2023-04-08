@@ -20,3 +20,9 @@ export const getTest = (studentYear) => {
     dispatch(setIsLoading(false));
   };
 }
+
+export const removeStateTets = () => {
+  return async (dispatch) => {
+    dispatch(setTest([]));
+  };
+}
