@@ -1,5 +1,5 @@
-import { SetQuestions } from "./questionsSlice";
-import { servicesGetQuestions, servicesQuestions } from "./service";
+import { SetQuestions, setLoading } from "./questionsSlice";
+import { servicesGetQuestions, servicesQuestions, servicesUpdateQuestion } from "./service";
 
 
 
@@ -19,4 +19,16 @@ export const getQuestions = () => {
     dispatch(SetQuestions(data))
   }
 
+}
+
+
+// Actualizar una pregunta en la base de datos
+export const updateQuestionThunk = (dataQuestions, id) => {
+  console.log(dataQuestions, id);
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    const data = await servicesUpdateQuestion(dataQuestions, id);
+    dispatch(setLoading(false));
+    console.log(data);
+  };
 }

@@ -33,6 +33,7 @@ export const QuestionsPage = () => {
         </div>
         {questions !== undefined? (
           <CardDataQuestions
+          stateQuestion={questions}
             question={idCategory === 0 ? questions : questions.filter(
               (question) => question.id_category == idCategory
             )}

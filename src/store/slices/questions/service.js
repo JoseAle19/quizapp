@@ -25,3 +25,23 @@ export const servicesGetQuestions = async () => {
     };
   }
 };
+
+export const servicesUpdateQuestion = async (dataQuestions, questionId) => {
+  const { answers, question, timeQ } = dataQuestions;
+
+  try {
+    const { data } = await quizApi.put("questions/updateQuestion", {
+      question,
+      timeQ,
+      answers,
+      questionId,
+    });
+    return data;
+  } catch (error) {
+    
+    return {
+      status: false,
+      error: error.response.data.err?.errors || error.response.data,
+    };
+  }
+};
