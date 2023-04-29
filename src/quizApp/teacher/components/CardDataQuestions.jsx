@@ -43,11 +43,9 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
     modalIsOpen,
     isEmpyUpateAnswer,
     modalInfo,
-    addValueModal
+    addValueModal,
   } = useForms(initialState);
   const { question: q, r1, r2, r3, r4, s1, s2, s3, s4, timeQ } = formState;
-
-
 
   const answers = {
     answers: [
@@ -69,7 +67,6 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
       },
     ],
   };
-
 
   return (
     <>
@@ -175,7 +172,6 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
                       className="btn btn-primary mt-3 mb-3 w-100 "
                       onClick={() => {
                         const answersIndex = JSON.stringify(answers);
-                        console.log(answersIndex);
                         const descriptionQuestion =
                           formState.question.length > 0
                             ? formState.question
@@ -188,7 +184,7 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
                         updateQuestion(
                           [s1, s2, s3, s4],
                           questionIndex, //index de la pregunta
-                          modalInfo.id_Q,//id de la pregunta, id del index
+                          modalInfo.id_Q, //id de la pregunta, id del index
                           descriptionQuestion, //descripcion de la pregunta
                           answersIndex, //respuestas de la pregunta en formato string
                           timeQuestion //tiempo de la pregunta

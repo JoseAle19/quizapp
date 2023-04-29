@@ -20,7 +20,7 @@ export const NavBarLeader = () => {
             </Link>
           </li>
           <li>
-            <Link to="/test-leader" className="nav-link">
+            <Link to="/test-leader"  className="nav-link">
               Ver examenes
             </Link>
           </li>

@@ -86,12 +86,12 @@ export const hookCreateTest = () => {
     setNumberQ(e.target.value);
   };
 
-  // funcipFunciones del componente de crear examen manual
+  // Funciones del componente de crear examen manual
   const deleteQuestion = (id) => {
     setQuestionsAle(questionsAle.filter((question) => question.id_Q !== id));
   };
 
-  //   Verificar si son segundoso minutos o horas
+  //Verificar si son segundoso minutos o horas
   const seconstOrMinutes = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
@@ -100,6 +100,15 @@ export const hookCreateTest = () => {
       return `El tiempo del examen es de ${seconds} segundos`;
     }
     return `El tiempo del examen es de ${minutes} minutos y ${seconds} segundos `;
+  };
+  const seconstOrMinutesByTest = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+
+    if (minutes === 0) {
+      return {minutes , seconds};
+    }
+    return {  minutes, seconds}
   };
 
   const postTest = async (data) => {
@@ -117,7 +126,7 @@ export const hookCreateTest = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Something went wrong!",
+        text: "Ah ocurrido un error!",
       });
     }
   };
@@ -136,5 +145,6 @@ export const hookCreateTest = () => {
     deleteQuestion,
     seconstOrMinutes,
     postTest,
+    seconstOrMinutesByTest
   };
 };

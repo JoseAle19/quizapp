@@ -79,7 +79,7 @@ export const useForms = (initialForm = {}) => {
     }
     return true;
   };
-
+// Funcion de actualizar preguntas
   const updateQuestion = (ans, index, id, question, answers, timeQ) => {
     if (!validateOneAnswer(...ans)) {
       return;

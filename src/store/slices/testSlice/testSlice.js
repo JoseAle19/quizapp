@@ -6,6 +6,7 @@ export const testSlice = createSlice({
   initialState: {
     isLoading: false,
     tests: [],
+    questionsByTest: [],
   },
   reducers: {
     setIsLoading: (state, { payload }) => {
@@ -14,7 +15,9 @@ export const testSlice = createSlice({
     setTest: (state, { payload }) => {
       state.tests = payload;
     },
+    setQuestionsByTest: (state, { payload }) => {
+      state.questionsByTest = payload;
+    },
   },
 });
-export const { setIsLoading, setTest } = testSlice.actions;
- 
+export const { setIsLoading, setTest, setQuestionsByTest } = testSlice.actions;

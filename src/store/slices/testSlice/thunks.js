@@ -1,5 +1,5 @@
-import { serviceGetTest, servicePostTest } from "./service";
-import { setIsLoading, setTest } from "./testSlice";
+import { serviceGetQuestionByTest, serviceGetTest, servicePostTest } from "./service";
+import { setIsLoading, setQuestionsByTest, setTest } from "./testSlice";
 
 
 
@@ -25,4 +25,15 @@ export const removeStateTets = () => {
   return async (dispatch) => {
     dispatch(setTest([]));
   };
+}
+
+
+// Obtener las preguntas de un test
+export const getQuestionByTest = (id, user) => {
+    return  async (dispatch) => {
+      dispatch(setIsLoading(true));
+      const data = await serviceGetQuestionByTest(id, user);
+      dispatch(setQuestionsByTest(data));
+      dispatch(setIsLoading(false));
+    }
 }
