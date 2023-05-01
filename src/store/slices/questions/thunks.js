@@ -5,6 +5,7 @@ import { servicesGetQuestions, servicesQuestions, servicesUpdateQuestion } from 
 
 // Inserta una pregunta en la base de datosl
 export const addQuestion = (dataQuestions) => {
+  console.log(dataQuestions);
   return async (dispatch) => {
     const data = await servicesQuestions(dataQuestions);
   };

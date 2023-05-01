@@ -1,25 +1,30 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import {
   getQuestionByTest,
-  getTest,
 } from "../../../store/slices/testSlice/thunks";
-import { hookCreateTest } from "../../teacher/hooks/hookCreateTest";
 import { CountdownTimer } from "../components/CounterTime";
 
-export const DoingTest = () => {
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-  const { id, duration } = useParams();
-  const user = useSelector((state) => state.auth.user);
-  const tests = useSelector((state) => state.test.questionsByTest);
-  const { seconstOrMinutes, seconstOrMinutesByTest } = hookCreateTest();
+import { hookDoingtest } from "../hooks/hookDoingtest";
 
-  const dispatch = useDispatch();
+export const DoingTest = () => {
+  const {
+    user,
+    dispatch,
+    tests,
+    seconstOrMinutes,
+    seconstOrMinutesByTest,
+    duration,
+    id,
+    selectedAnswers,
+    setSelectedAnswers,
+    handleSelectAnswer,
+    handleTimerEnd,
+    confirmFinishTest 
+  } = hookDoingtest();
+
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       event.preventDefault();
-      console.log("regreso");
       event.returnValue = "";
       localStorage.setItem("selectedAnswers", JSON.stringify(selectedAnswers));
     };
@@ -29,21 +34,13 @@ export const DoingTest = () => {
     };
   }, [selectedAnswers]);
 
-
-  const handleSelectAnswer = (questionIndex, answerIndex) => {
-    setSelectedAnswers({
-      ...selectedAnswers,
-      [questionIndex]: answerIndex,
-    });
-  };
   // Listener de recarga de pagina
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       event.preventDefault();
-      console.log("unload");
       event.returnValue = "";
       localStorage.setItem("selectedAnswers", JSON.stringify(selectedAnswers));
-    }
+    };
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
@@ -56,23 +53,14 @@ export const DoingTest = () => {
       JSON.stringify({ status: "pending", id: id })
     );
     setSelectedAnswers(JSON.parse(localStorage.getItem("selectedAnswers")));
-    dispatch(getTest(user.year));
+    // dispatch(getTest(user.year));
     dispatch(getQuestionByTest(id, user.year));
   }, []);
 
-  // Limitar datos de examen
-  const handleFinishTest = () => {
-    localStorage.removeItem("Idtest");
-    localStorage.removeItem("selectedAnswers");
-    setSelectedAnswers({});
-  };
-  // contador de tiempo
-  const handleTimerEnd = () => {
-    alert("¡Se acabó el tiempo!");
-  };
   return (
     <div>
       <div>
+        <span>conectado</span>
         <h1>Examen en curso</h1>
         <h2>{seconstOrMinutes(duration)}</h2>
         <CountdownTimer
@@ -110,7 +98,7 @@ export const DoingTest = () => {
       </div>
       <button
         // TODO: Falta estas funcionalidades
-        onClick={() => handleFinishTest()}
+        onClick={() => confirmFinishTest()}
       >
         Terminar
       </button>

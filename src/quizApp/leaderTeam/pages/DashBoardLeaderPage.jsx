@@ -5,8 +5,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export const DashBoardLeaderPage = () => {
   const { user } = useSelector((state) => state.auth);
-  useEffect(() => {
-  }, []);
 
   return (
     <div>

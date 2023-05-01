@@ -7,6 +7,7 @@ export const servicesQuestions = async (dataQuestions) => {
     });
     return data;
   } catch (error) {
+    console.log(error.response.data); 
     return {
       status: false,
       error: error.response.data.err?.errors || error.response.data,

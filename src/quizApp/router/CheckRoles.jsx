@@ -17,7 +17,7 @@ export const CheckRoles = () => {
   if (user.idrol === 3) {
     return <TeacherRouter />;
   }
-  if (user.idrol === 4) {
+  if (user.idrol === 6) {
     return <AdminRouter />;
   }
   if (user.idrol === 5) {

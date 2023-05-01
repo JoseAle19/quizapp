@@ -1,0 +1,32 @@
+.table-question{
+   text-align: center;
+   padding: 10px;
+}
+
+.RenderTable-card{
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 20px;
+    padding: 5px;
+}
+.RenderTable-box-isCorrect{
+    height: 20px;
+    margin: 0 5px;
+}
+
+.RenderTable-isCorrect{
+    height: 20px;
+    text-align: justify;
+    font-size: 15px;
+    margin: 0 5px;
+    background-color: rgb(140, 241, 140);
+}
+.RenderTable-isCorrect-false{
+    height: 20px;
+    text-align: justify;
+    font-size: 15px;
+    margin: 0 5px;
+    background-color:rgb(235, 117, 117)
+}
