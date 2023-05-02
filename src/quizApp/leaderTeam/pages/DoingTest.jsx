@@ -5,8 +5,21 @@ import {
 import { CountdownTimer } from "../components/CounterTime";
 
 import { hookDoingtest } from "../hooks/hookDoingtest";
+import { urlProduccionApi } from "../../../Api/QuizApi";
 
 export const DoingTest = () => {
+  const isProductionOrLocal = (question) => {
+    urlProduccionApi === "https://apiquizapp-production.up.railway.app/";
+
+    if (urlProduccionApi === "https://apiquizapp-production.up.railway.app/") {
+      console.log("estas en produccion");
+      return question.answers.answers;
+    } else {
+      console.log("estas en local");
+      return JSON.parse(question.answers).answers;
+    }
+  };
+
   const {
     user,
     dispatch,
@@ -53,7 +66,6 @@ export const DoingTest = () => {
       JSON.stringify({ status: "pending", id: id })
     );
     setSelectedAnswers(JSON.parse(localStorage.getItem("selectedAnswers")));
-    // dispatch(getTest(user.year));
     dispatch(getQuestionByTest(id, user.year));
   }, []);
 
@@ -75,7 +87,7 @@ export const DoingTest = () => {
             <div key={questionIndex}>
               <p>{dataQuestion.question}</p>
               {/* Respuestas de cada pregunta */}
-              {JSON.parse(dataQuestion.answers).answers.map((answer, index) => (
+              {isProductionOrLocal(dataQuestion).map((answer, index) => (
                 <div key={index}>
                   <input
                     type="radio"

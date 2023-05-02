@@ -20,7 +20,7 @@ export const QuestionsPage = () => {
   });
   const { idCategory } = formState;
 
-  return (
+return (
     <>
       <div className="card_questionpage-contendor">
         <div className="card_questionpage-filt_title">

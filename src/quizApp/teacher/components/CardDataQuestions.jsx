@@ -4,6 +4,7 @@ import { useState } from "react";
 import "../css/CardQuestionUpdate.css";
 import { CardQuestions } from "./CardQuestions";
 import { useForms } from "../hooks/useForms";
+import { urlProduccionApi } from "../../../Api/QuizApi";
 const modalCustomStyles = {
   content: {
     top: "50%",
@@ -32,7 +33,21 @@ const initialState = {
 };
 
 export const CardDataQuestions = ({ question, stateQuestion }) => {
+  // Estas en produccion
+  const isProductionOrLocal = (question) => {
+    urlProduccionApi === "https://apiquizapp-production.up.railway.app/";
+
+    if (urlProduccionApi === "https://apiquizapp-production.up.railway.app/") {
+      console.log("estas en produccion");
+      return question.answers.answers;
+    } else {
+      console.log("estas en local");
+      return JSON.parse(question.answers).answers;
+    }
+  };
+
   const [questionIndex, setQuestionIndex] = useState();
+
   const {
     changeInputs,
     formState,
@@ -207,7 +222,7 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
               <span>Respuestas</span>
               <hr />
               <div className="card_questionpage-gridanswers">
-                {JSON.parse(question.answers).answers.map((answer, index) => {
+                {isProductionOrLocal(question).map((answer, index) => {
                   return (
                     <p
                       key={index}

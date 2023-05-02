@@ -45,9 +45,7 @@ export const LeaderTest = () => {
                 <p className="Leadertest-test-name">
                   Nombre del examen {test.name}
                 </p>
-                {/* <p className="Leadertest-test-duration">
-                  Duracion {test.duration}s
-                </p> */}
+          
 
                 {test.id == parseJson(getStorage("Idtest"))?.id ? (
                   <CountdownTimer
