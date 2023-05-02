@@ -4,7 +4,7 @@ import { getQuestionByTest } from "../../../store/slices/testSlice/thunks";
 import { useDispatch, useSelector } from "react-redux";
 import { RenderTable } from "../components/RenderTable";
 import { Loading } from "../../../ui/components/Loading";
-import { socket } from "../../../socket";
+import { socket} from "../../../socket";
 export const TableTest = () => {
   const { isLoading } = useSelector((state) => state.test);
   const questions = useSelector((state) => state.test.questionsByTest);
