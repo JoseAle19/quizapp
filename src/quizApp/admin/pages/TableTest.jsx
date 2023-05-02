@@ -3,12 +3,10 @@ import { useParams } from "react-router-dom";
 import { getQuestionByTest } from "../../../store/slices/testSlice/thunks";
 import { useDispatch, useSelector } from "react-redux";
 import { RenderTable } from "../components/RenderTable";
-import { socket } from "../../leaderTeam/socket";
 import { Loading } from "../../../ui/components/Loading";
-
+import { socket } from "../../../socket";
 export const TableTest = () => {
   const { isLoading } = useSelector((state) => state.test);
-
   const questions = useSelector((state) => state.test.questionsByTest);
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
