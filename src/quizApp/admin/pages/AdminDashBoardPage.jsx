@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { socket } from "../../leaderTeam/socket";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTest } from "../../../store/slices/testSlice/thunks";
 import { custom_hook_jsons } from "../../global_hooks/custom_hook_jsons";
 import { Loading } from "../../../ui/components/Loading";
 import { useNavigate } from "react-router-dom";
+import { socket } from "../../../socket";
 
 export const AdminDashBoardPage = () => {
   const { tests, isLoading } = useSelector((state) => state.test);
