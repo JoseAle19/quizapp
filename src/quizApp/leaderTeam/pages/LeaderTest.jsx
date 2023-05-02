@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { custom_hook_jsons } from "../../global_hooks/custom_hook_jsons";
 import { hookCreateTest } from "../../teacher/hooks/hookCreateTest";
 import { CountdownTimer } from "../components/CounterTime";
+import { socket } from "../../../socket";
 // socket
-import { socket } from "../socket";
 export const LeaderTest = () => {
   const { user } = useSelector((state) => state.auth);
   const { tests, isLoading } = useSelector((state) => state.test);
