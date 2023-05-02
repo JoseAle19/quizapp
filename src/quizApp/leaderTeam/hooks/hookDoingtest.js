@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { hookCreateTest } from "../../teacher/hooks/hookCreateTest";
-import { socket } from "../socket";
 import Swal from "sweetalert2";
+import { socket } from "../../../socket";
 export const hookDoingtest = () => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const { id, duration } = useParams();
