@@ -75,8 +75,8 @@ export const AdminDashBoardPage = () => {
                 <button 
                 onClick={() => {
                   // TODO: ya se puede ver el examen
-                    alertForTest()
-                  // navigate(`/questions-test/${test.id}`)
+                    // alertForTest()
+                  navigate(`/questions-test/${test.id}`)
                 }}
                 className="Leadertest-btn">Ver examen</button>
               </div>
