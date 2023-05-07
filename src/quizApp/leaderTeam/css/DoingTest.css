@@ -1,0 +1,65 @@
+.DoingTest-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 0 20px; /* agrega 20 píxeles de padding a los lados */
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+
+.DoingTest-timeAndTile {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+.DoingTest-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .DoingTest-time {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .DoingTest-listQuestions {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .DoingTest-desQuestion {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .DoingTest-checkbox {
+    margin-right: 0.5rem;
+  }
+  
+  .DoingTest-desRespuesta {
+    font-size: 1.25rem;
+  }
+  
+  .DoingTest-buttonFinish {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    margin-top: 2rem;
+    cursor: pointer;
+  }
+  
+  .DoingTest-buttonFinish:hover {
+    background-color: #0069d9;
+  }
+  

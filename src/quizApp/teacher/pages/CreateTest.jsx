@@ -43,19 +43,21 @@ export const CreateTest = () => {
   };
   return (
     <div className={handleScroll()}>
- 
       <h1 className="CreateTest_title">Crear nuevo examen</h1>
 
       <div className="CreateTest_conf_test">
         <div className="CreateTest_config">
-          <input
-            className="CreateTest_numberQ"
-            type="number"
-            placeholder="Numero de preguntas"
-            min={1}
-            value={numberQ}
-            onChange={handleCahngeNumberQ}
-          />
+          <div className="CreateTest_labelQuestions">
+            <label>Numero de preguntas</label>
+            <input
+              className="CreateTest_numberQ"
+              type="number"
+              placeholder="Numero de preguntas"
+              min={1}
+              value={numberQ}
+              onChange={handleCahngeNumberQ}
+            />
+          </div>
 
           <p>
             Agregar preguntas manualmente
@@ -100,11 +102,11 @@ export const CreateTest = () => {
           />
         </div>
         {isLoading && (
-        <div className="CreateTest_positioned">
-          {" "}
-          <Loading />{" "}
-        </div>
-      )}
+          <div className="CreateTest_positioned">
+            {" "}
+            <Loading />{" "}
+          </div>
+        )}
       </div>
     </div>
   );

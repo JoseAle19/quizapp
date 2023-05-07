@@ -4,14 +4,13 @@ import { getQuestionByTest } from "../../../store/slices/testSlice/thunks";
 import { useDispatch, useSelector } from "react-redux";
 import { RenderTable } from "../components/RenderTable";
 import { Loading } from "../../../ui/components/Loading";
-import { socket} from "../../../socket";
+import { socket } from "../../../socket";
 export const TableTest = () => {
   const { isLoading } = useSelector((state) => state.test);
   const questions = useSelector((state) => state.test.questionsByTest);
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const [answers, setAnswers] = useState([]);
-
   const { id } = useParams();
   useEffect(() => {
     dispatch(getQuestionByTest(id, 2023));
@@ -24,10 +23,10 @@ export const TableTest = () => {
     };
     const handleUserAnswer = (data) => {
       const { user, questionIndex, answerIndex } = data;
-      setAnswers((previous) => [
-        ...previous,
-        { user: user.id, questionIndex, answerIndex },
-      ]);
+        setAnswers((previous) => [
+          ...previous,
+          { user: user.id, questionIndex, answerIndex },
+        ]);
     };
     // respuesta de usuario
     socket.on("server-user-answer", handleUserAnswer);
@@ -54,7 +53,6 @@ export const TableTest = () => {
           answers={answers}
           connectedUsers={users}
           nameQuestion={questions.questions}
-          // answers={}
         />
       )}
     </div>

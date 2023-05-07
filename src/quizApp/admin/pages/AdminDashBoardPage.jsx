@@ -11,10 +11,6 @@ import { Loading } from "../../../ui/components/Loading";
 import { useNavigate } from "react-router-dom";
 
 
-// variables globales especial de socket
-import { socket } from "../../../socket";
-
-
 // Alertas
 import Swal from "sweetalert2";
 export const AdminDashBoardPage = () => {
@@ -42,7 +38,7 @@ export const AdminDashBoardPage = () => {
 
   return (
     <>
-      <div className="Leadertest-test">
+      <div className="">
         <h1>Estado de examen</h1>
         {isLoading ? (
           <Loading />

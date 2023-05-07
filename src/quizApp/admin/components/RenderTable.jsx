@@ -1,4 +1,5 @@
 import "../css/TableQuestions.css";
+import _ from "lodash";
 export const RenderTable = ({ connectedUsers, nameQuestion, answers }) => {
   return (
     <table>
@@ -20,12 +21,15 @@ export const RenderTable = ({ connectedUsers, nameQuestion, answers }) => {
               <span>{user.name}</span>
             </td>
             {nameQuestion.map((question, indexQuestion) => {
-              const answerIndex = answers.findIndex(
-                (answer) =>
+              // toma el ultimo index de cada respuesta de una pregunta
+              const answerIndex = _.findLastIndex(answers, (answer) => {
+                return (
                   answer.questionIndex == indexQuestion &&
                   answer.user == user.id
-              );
-              const answer = answerIndex !== -1 ? answers[answerIndex] : null;
+                );
+              });
+              console.log(answerIndex);
+              const answer = answerIndex != -1 ? answers[answerIndex] : null;
 
               return (
                 <td

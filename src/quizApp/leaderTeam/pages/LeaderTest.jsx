@@ -9,6 +9,7 @@ import { custom_hook_jsons } from "../../global_hooks/custom_hook_jsons";
 import { hookCreateTest } from "../../teacher/hooks/hookCreateTest";
 import { CountdownTimer } from "../components/CounterTime";
 import { socket } from "../../../socket";
+import Swal from "sweetalert2";
 // socket
 export const LeaderTest = () => {
   const { user } = useSelector((state) => state.auth);
@@ -27,7 +28,7 @@ export const LeaderTest = () => {
     alert("¡Se acabó el tiempo!");
   };
   // CustomHook
-  const { seconstOrMinutesByTest } = hookCreateTest();
+  const { seconstOrMinutesByTest, seconstOrMinutes } = hookCreateTest();
   const { getStorage, parseJson } = custom_hook_jsons();
   return (
     <div className="Leadertest-container">
@@ -36,7 +37,7 @@ export const LeaderTest = () => {
       <div className="Leadertest-test">
         {isLoading ? (
           <Loading />
-        ) : tests.test?.length < 1 ? (
+        ) : tests.test?.length  == 0? (
           <h1>No hay examenes previos</h1>
         ) : (
           tests.test?.map((test, index) => {
@@ -50,12 +51,11 @@ export const LeaderTest = () => {
                 {test.id == parseJson(getStorage("Idtest"))?.id ? (
                   <CountdownTimer
                     minutes={seconstOrMinutesByTest(test.duration).minutes}
-                    seconds={seconstOrMinutesByTest(test.duration).seconds}
                     onTimerEnd={handleTimerEnd}
                   />
                 ) : (
                   <p className="Leadertest-test-duration">
-                    Duracion {test.duration}s
+                    Duracion {seconstOrMinutes(test.duration)}
                   </p>
                 )}
              
@@ -77,7 +77,12 @@ export const LeaderTest = () => {
                       parseJson(getStorage("Idtest")).id != test.id
 
                     ) {
-                      alert("Tienes un examen pendiente");
+                      // Alerta de que estoy haciendo otro examen
+                      Swal.fire({
+                        title: "Tines un examen en curso",
+                        text: 'Tienes un examen en curso, no puedes hacer otro examen hasta que termines el que estas haciendo',
+                        icon: "warning",
+                      });
                       return;
                     } else {
 

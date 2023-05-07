@@ -1,0 +1,17 @@
+.CounterTime-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .CounterTime-titleTime {
+    font-size: 36px;
+    font-weight: bold;
+    color: #555;
+    margin: 0;
+  }
+  

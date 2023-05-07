@@ -32,7 +32,7 @@ export const DataTest = ({
             );
           })
         )}
-        <span>{seconstOrMinutes(timeTest)}</span>
+        <span>{`Tiempoo del examen ${Math.floor(timeTest /60) } minutos`}</span>
       </div>
 
       <button
