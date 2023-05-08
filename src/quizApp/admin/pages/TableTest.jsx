@@ -30,7 +30,7 @@ export const TableTest = () => {
     };
     // respuesta de usuario
     socket.on("server-user-answer", handleUserAnswer);
-
+    // usuario conectado lider del equipo
     socket.on("server-newUserConnected", handleUser);
     socket.on("server-user-disconnected", handleUserDisconnected);
 

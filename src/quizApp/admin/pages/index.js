@@ -1,2 +1,2 @@
 export * from './AdminDashBoardPage'
-export * from './HistoryPage'
+export * from './Grafics'

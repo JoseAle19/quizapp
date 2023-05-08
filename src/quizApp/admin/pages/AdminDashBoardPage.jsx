@@ -73,6 +73,7 @@ export const AdminDashBoardPage = () => {
                   // TODO: ya se puede ver el examen
                     // alertForTest()
                   navigate(`/questions-test/${test.id}`)
+                    // navigate(`/grafics/${test.id}`)
                 }}
                 className="Leadertest-btn">Ver examen</button>
               </div>
