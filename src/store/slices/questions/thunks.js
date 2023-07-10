@@ -1,11 +1,10 @@
 import { SetQuestions, setLoading } from "./questionsSlice";
-import { servicesGetQuestions, servicesQuestions, servicesUpdateQuestion } from "./service";
+import { servicesDeleteQuestion, servicesGetQuestions, servicesQuestions, servicesUpdateQuestion } from "./service";
 
 
 
 // Inserta una pregunta en la base de datosl
 export const addQuestion = (dataQuestions) => {
-  console.log(dataQuestions);
   return async (dispatch) => {
     const data = await servicesQuestions(dataQuestions);
   };
@@ -25,11 +24,17 @@ export const getQuestions = () => {
 
 // Actualizar una pregunta en la base de datos
 export const updateQuestionThunk = (dataQuestions, id) => {
-  console.log(dataQuestions, id);
   return async (dispatch) => {
     dispatch(setLoading(true));
     const data = await servicesUpdateQuestion(dataQuestions, id);
     dispatch(setLoading(false));
-    console.log(data);
+  };
+}
+
+export const deleteQuestionThunk = (id) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    const data = await servicesDeleteQuestion(id);
+    dispatch(setLoading(false));
   };
 }

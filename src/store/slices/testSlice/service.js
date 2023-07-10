@@ -36,3 +36,12 @@ export const serviceGetQuestionByTest = async (idTest, userYear) => {
     };
   }
 };
+
+export const serviceGetTestActive = async (id) => {
+  try {
+    const { data } = await quizApi.get(`test/test-enable/${id}`);
+    return data;
+  } catch (error) {
+    return error.response.data.err?.errors || error.response.data;
+  }
+};

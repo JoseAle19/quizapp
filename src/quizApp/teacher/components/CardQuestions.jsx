@@ -1,6 +1,6 @@
 import "../css/CardQuestion.css";
 export const CardQuestions = ({
-  name, 
+  name,
   changeInputs,
   value,
   placeholder,
@@ -19,7 +19,6 @@ export const CardQuestions = ({
               ? "border  border-success border-2 border-top-0 border-end-0 border-start-0"
               : "border  border-danger border-2 border-top-0 border-end-0 border-start-0"
           }  `}
-          // className= {``}
           type="text"
           placeholder={placeholder}
         />
@@ -36,6 +35,7 @@ export const CardQuestions = ({
           }}
           name={valueCheckName}
           value={valueCheck}
+          checked={valueCheck}
         />
       </div>
     </>

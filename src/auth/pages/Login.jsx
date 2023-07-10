@@ -54,7 +54,7 @@ export const Login = () => {
 
           <div className="loginPage-btn__register">
             <Link to={'/auth/register'} >
-            Registrarse como acesor
+            Registrarse como asesor
             </Link>
           </div>
         </div>

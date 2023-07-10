@@ -44,7 +44,9 @@ export const useFormRegister = (initialtate = {}) => {
     } = form;
 
     data.students = students;
-    data.idrol =5;
+      // Colocar el id del rol de la base de datos
+        
+    data.idrol =4;
     // Validaciones del form
     const {
       nameAdviser,
@@ -118,7 +120,6 @@ export const useFormRegister = (initialtate = {}) => {
         2000
       );
     }
-    console.log(students);
     const countLeaders = students.filter(
       (student) => student.isLeader === false
     );

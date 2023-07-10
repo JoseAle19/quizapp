@@ -7,7 +7,7 @@ export const servicesQuestions = async (dataQuestions) => {
     });
     return data;
   } catch (error) {
-    console.log(error.response.data); 
+    console.log(error.response.data);
     return {
       status: false,
       error: error.response.data.err?.errors || error.response.data,
@@ -39,7 +39,20 @@ export const servicesUpdateQuestion = async (dataQuestions, questionId) => {
     });
     return data;
   } catch (error) {
-    
+    return {
+      status: false,
+      error: error.response.data.err?.errors || error.response.data,
+    };
+  }
+};
+
+export const servicesDeleteQuestion = async (questionId) => {
+  try {
+    const { data } = await quizApi.delete(
+      `questions/deleteQuestion/${questionId}`
+    );
+    return data;
+  } catch (error) {
     return {
       status: false,
       error: error.response.data.err?.errors || error.response.data,

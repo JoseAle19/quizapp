@@ -39,7 +39,8 @@ export const AdminDashBoardPage = () => {
   return (
     <>
       <div className="">
-        <h1>Estado de examen</h1>
+        <h1>Mostrar el examen</h1>
+        
         {isLoading ? (
           <Loading />
         ) : tests.test?.length < 1 ? (
@@ -60,7 +61,7 @@ export const AdminDashBoardPage = () => {
                   />
                 ) : (
                   <p className="Leadertest-test-duration">
-                    Duracion {test.duration}s
+                    Duracion {test.duration} minutos
                   </p>
                 )}
 
@@ -70,10 +71,9 @@ export const AdminDashBoardPage = () => {
 
                 <button 
                 onClick={() => {
-                  // TODO: ya se puede ver el examen
-                    // alertForTest()
-                  navigate(`/questions-test/${test.id}`)
-                    // navigate(`/grafics/${test.id}`)
+                     // alertForTest()
+                  // navigate(`/questions-test/${test.id}`)
+                    navigate(`/grafics/${test.id}/${test.duration}`)
                 }}
                 className="Leadertest-btn">Ver examen</button>
               </div>

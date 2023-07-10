@@ -17,6 +17,16 @@ export const questionsSlice = createSlice({
       const { index, questionUpdate } = payload;
       state.questions[index] = questionUpdate;
     },
+    deleteQuestionSlice: (state, { payload }) => {
+      const { questionsNotDelete } = payload;
+
+      state.questions = questionsNotDelete;
+    },
   },
 });
-export const { SetQuestions, questionUpdateSlice, setLoading } = questionsSlice.actions;
+export const {
+  SetQuestions,
+  questionUpdateSlice,
+  setLoading,
+  deleteQuestionSlice,
+} = questionsSlice.actions;

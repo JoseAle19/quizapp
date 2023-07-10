@@ -69,139 +69,50 @@
 
 
 }
-/* 
 
-.leader {
-    background-color: rgba(69, 168, 69, 0.767);
-    padding: 20px;
-    width: 80%;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-
-}
-
-
-
-
-.Leadertest-container {
-    margin-left: 250px;
-
-}
-
-.Leadertest-title {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-
-.Leadertest-test{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-
-
-.Leadertest-test-container{
-    background-color: rgb(213, 228, 213);
-    padding: 20px;
-    width: 80%;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.Leadertest-btn{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: rgb(69, 168, 69);
-    border-radius: 10px;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-}
-.Leadertest-btn-doing{
-    margin-top: 20px;
-    margin-bottom: 20px;    
-    background-color: rgb(168, 69, 69);
-    border-radius: 10px;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-} */
-
-
-/* .leader {
-    background-color: rgba(69, 168, 69, 0.767);
-    padding: 20px;
-    width: 80%;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-
-} */
 .Leadertest-container {
     max-width: 1200px;
     padding: 50px 20px;
     margin-left: 250px;
-  }
-  
-  .Leadertest-title {
+}
+
+.Leadertest-title {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
-  }
-  
-  .Leadertest-test {
+}
+
+.Leadertest-test {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .Leadertest-test-container {
+    justify-content: space-around;
+}
+
+.Leadertest-test-container {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: 20px;
     width: calc(33.33% - 10px);
     margin-bottom: 20px;
-  }
-  
-  .Leadertest-test-name {
+}
+
+.Leadertest-test-name {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  
-  .Leadertest-test-duration,
-  .Leadertest-test-year {
+}
+
+.Leadertest-test-duration,
+.Leadertest-test-year {
     font-size: 18px;
     margin-bottom: 10px;
-  }
-  
-  .Leadertest-btn,
-  .Leadertest-btn-doing {
+}
+
+.Leadertest-btn,
+.Leadertest-btn-doing {
     display: inline-block;
     padding: 10px;
-    background-color: #007bff;
+    background-color: rgb(85, 85, 85);
     color: #fff;
     font-size: 18px;
     font-weight: bold;
@@ -209,14 +120,14 @@
     border-radius: 5px;
     margin-top: 10px;
     transition: background-color 0.2s ease-in-out;
-  }
-  
-  .Leadertest-btn:hover,
-  .Leadertest-btn-doing:hover {
+    width: 100%;
+}
+
+.Leadertest-btn:hover,
+.Leadertest-btn-doing:hover {
     background-color: #0062cc;
-  }
-  
-  .Leadertest-btn-doing {
+}
+
+.Leadertest-btn-doing {
     background-color: #ffc107;
-  }
-  
+}

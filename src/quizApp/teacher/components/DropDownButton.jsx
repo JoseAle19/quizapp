@@ -1,7 +1,8 @@
-export const DropDownButton = ({ changeInputs, categories, label}) => {
+export const DropDownButton = ({ changeInputs, categories, label, value }) => {
   return (
     <div className="m-4">
       <select
+        value={value}
         className="form-select"
         onChange={({ target }) => {
           changeInputs({
@@ -28,4 +29,3 @@ export const DropDownButton = ({ changeInputs, categories, label}) => {
     </div>
   );
 };
-  

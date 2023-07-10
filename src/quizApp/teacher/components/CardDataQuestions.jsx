@@ -38,10 +38,10 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
     urlProduccionApi === "https://apiquizapp-production.up.railway.app/";
 
     if (urlProduccionApi === "https://apiquizapp-production.up.railway.app/") {
-      console.log("estas en produccion");
+      // console.log("estas en produccion");
       return question.answers.answers;
     } else {
-      console.log("estas en local");
+      // console.log("estas en local");
       return JSON.parse(question.answers).answers;
     }
   };
@@ -59,6 +59,7 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
     isEmpyUpateAnswer,
     modalInfo,
     addValueModal,
+    deleteQuestion,
   } = useForms(initialState);
   const { question: q, r1, r2, r3, r4, s1, s2, s3, s4, timeQ } = formState;
 
@@ -90,7 +91,7 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
           <div key={index} className="card_questionpage-card">
             <div className="card_questionpage_menutop">
               <div className="card_questionpage-menuleft">
-                <img src="../../../public/icon-question.png" alt="" />
+                <img src="../../../public/icon-question.png" />
                 <p>pregunta {index + 1}</p>
               </div>
               <div className="card_questionpage-menuright">
@@ -99,18 +100,16 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
                   onClick={() => {
                     addValueModal(stateQuestion[index]);
                     setQuestionIndex(index);
-                    // console.log(stateQuestion);
                     openModal();
                   }}
                   src="../../../edit.png"
-                  alt=""
+                  alt="edit"
                 />
                 <Modal
                   isOpen={modalIsOpen}
                   onafterOpen={afterOpenModal}
                   onRequestClose={closeModal}
                   style={modalCustomStyles}
-                  contentLabel="Hola"
                 >
                   <div>
                     {/*DAtos del input  */}
@@ -211,11 +210,17 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
                   </div>
                 </Modal>
 
-                <img src="../../../delete.png" alt="" />
+                <img
+                  src="../../../delete.png"
+                  alt="delete"
+                  onClick={() => {
+                    deleteQuestion(question.id_Q, question.question, index);
+                  }}
+                />
               </div>
             </div>
             <div className="card_questionpage-titleQ">
-              <p>Pregunta: {question.question}</p>
+              <p>Pregunta: {question?.question}</p>
             </div>
 
             <div className="card_questionpage-answers">

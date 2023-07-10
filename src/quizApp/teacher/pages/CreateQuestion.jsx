@@ -13,7 +13,7 @@ export const CreateQuestion = () => {
   }, []);
   const { categories } = useSelector((state) => state.categories);
   //custom hook general ( quizappv2/src/quizApp/hooks)
-  const { changeInputs, formState, saveQuestion } = useForms({
+  const { changeInputs, formState, saveQuestion, clearALlState } = useForms({
     idTeacher: user.id,
     idCategory: 0,
     question: "",
@@ -28,18 +28,25 @@ export const CreateQuestion = () => {
     s4: false,
   });
 
-  const { question, r1, r2, r3, r4, s1, s2, s3, s4, timeQ } = formState;
-
+  const { question, r1, r2, r3, r4, s1, s2, s3, s4, timeQ, idCategory} = formState;
   return (
     <>
       <div>
         <h1 className="bg-success p-2 text-light m-auto text-center">
           Agregar preguntas
         </h1>
-      <div>
-      <DropDownButton changeInputs={changeInputs} categories={categories} label={categories.length <1 ? `No hay categorias` : `Seleciona una categoria`}/>
-
-      </div>
+        <div>
+          <DropDownButton
+            changeInputs={changeInputs}
+            value={idCategory}
+            categories={categories}
+            label={
+              categories.length < 1
+                ? `No hay categorias`
+                : `Seleciona una categoria`
+            }
+          />
+        </div>
         <form className="m-2 ">
           <div className="d-flex m-2">
             <input

@@ -3,6 +3,7 @@ import _ from "lodash";
 export const RenderTable = ({ connectedUsers, nameQuestion, answers }) => {
   return (
     <table>
+     
       <thead>
         <tr>
           <th className="RenderTable-card">Nombre</th>
@@ -15,7 +16,7 @@ export const RenderTable = ({ connectedUsers, nameQuestion, answers }) => {
         </tr>
       </thead>
       <tbody>
-        {connectedUsers.map((user) => (
+        {connectedUsers && connectedUsers.map((user) => (
           <tr key={user.id}>
             <td className="RenderTable-card">
               <span>{user.name}</span>
@@ -28,7 +29,6 @@ export const RenderTable = ({ connectedUsers, nameQuestion, answers }) => {
                   answer.user == user.id
                 );
               });
-              console.log(answerIndex);
               const answer = answerIndex != -1 ? answers[answerIndex] : null;
 
               return (
@@ -54,10 +54,12 @@ export const RenderTable = ({ connectedUsers, nameQuestion, answers }) => {
                   </div>
                 </td>
               );
+                 
             })}
           </tr>
         ))}
       </tbody>
+      
     </table>
   );
 };

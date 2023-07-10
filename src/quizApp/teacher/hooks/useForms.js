@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { addQuestion, updateQuestionThunk } from "../../../store/slices/questions/thunks";
-import { questionUpdateSlice } from "../../../store/slices/questions/questionsSlice";
+import {
+  addQuestion,
+  deleteQuestionThunk,
+  updateQuestionThunk,
+} from "../../../store/slices/questions/thunks";
+import { deleteQuestionSlice, questionUpdateSlice } from "../../../store/slices/questions/questionsSlice";
 
 export const useForms = (initialForm = {}) => {
   const questions = useSelector((state) => state.questions.questions);
@@ -49,8 +53,10 @@ export const useForms = (initialForm = {}) => {
       return;
     }
     dispatch(addQuestion(formState));
-    Swal.fire("Correcto", "Pregunta guardada", "success");
+
     setFormState(initialForm);
+    Swal.fire("Correcto", "Pregunta guardada", "success");
+    return setFormState(initialForm);
   };
 
   // funciones para actualizar preguntas
@@ -79,7 +85,7 @@ export const useForms = (initialForm = {}) => {
     }
     return true;
   };
-// Funcion de actualizar preguntas
+  // Funcion de actualizar preguntas
   const updateQuestion = (ans, index, id, question, answers, timeQ) => {
     if (!validateOneAnswer(...ans)) {
       return;
@@ -117,6 +123,34 @@ export const useForms = (initialForm = {}) => {
   const addValueModal = (value) => {
     setModalInfo(value);
   };
+
+  // funciones para eleminar pregunta
+  const deleteQuestion = (id, question) => {
+    console.log('id', id);
+    
+    const questionsNotDelete = questions.filter(
+      (ques) =>  ques.id_Q !== id 
+    );
+
+
+    Swal.fire({
+      title: "¿Estas seguro?",
+      text: `Eliminaras la pregunta: ${question}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Si, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Eliminado", "Pregunta eliminada", "success");
+        
+        dispatch(deleteQuestionSlice({  questionsNotDelete}))
+        dispatch(deleteQuestionThunk(id));
+      }
+    });
+  };
   return {
     formState,
     changeInputs,
@@ -131,5 +165,8 @@ export const useForms = (initialForm = {}) => {
     isEmpyUpateAnswer,
     modalInfo,
     addValueModal,
+
+    // para eliminar pregunta
+    deleteQuestion,
   };
 };

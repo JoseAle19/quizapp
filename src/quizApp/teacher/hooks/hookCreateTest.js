@@ -1,16 +1,32 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTest } from "../../../store/slices/testSlice/thunks";
+import { useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
+import { custom_hook_jsons } from "../../global_hooks/custom_hook_jsons";
+import { socket } from "../../../socket";
 
 export const hookCreateTest = () => {
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const { questions } = useSelector((state) => state.questions);
   const [questionsAle, setQuestionsAle] = useState([]);
   const [numberQ, setNumberQ] = useState(0);
   const [isAleatorio, setIsAleatorio] = useState(false);
   const [isManual, setIsManual] = useState(false);
+
+  // hook para parsear y obtener el getStorage
+  const { getStorage, parseJson } = custom_hook_jsons();
+
+
+  // Cunado el suario se conecta
+  const handleUser = () => {
+    socket.connect();
+    socket.emit("user", parseJson(localStorage.getItem("user")));
+  };
+
   // La fucion existQuestion verifica si la pregunta ya esta agregada al arreglo questionsAle
   const existQuestion = (id) => {
     return questionsAle.filter((question) => question.id_Q === id).length > 0;
@@ -95,9 +111,11 @@ export const hookCreateTest = () => {
   const seconstOrMinutes = (time) => {
     const minutes = Math.floor(time);
 
-    return ` ${minutes} minutos`;
+    return `${minutes} minutos`;
   };
   const seconstOrMinutesByTest = (time) => {
+
+  
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
 
@@ -126,6 +144,22 @@ export const hookCreateTest = () => {
       });
     }
   };
+  //  Verificar si el examen esta activo
+  const verifyTestActive = ({ status, msg }, { id, duration }) => {
+    if (status) {
+      if (!getStorage('Idtest')) {
+        handleUser()
+      }
+       navigate(`/doing-test/${id}/${duration}`);
+    } else {
+      return Swal.fire({
+        title: "Examen no esta activo",
+        text: "Porfavor contacta al administrador",
+        icon: "warning",
+        timer: 3000,
+      });
+    }
+  };
 
   return {
     questionsAle,
@@ -143,5 +177,6 @@ export const hookCreateTest = () => {
     postTest,
     seconstOrMinutesByTest,
     seconstOrMinutes,
+    verifyTestActive,
   };
 };

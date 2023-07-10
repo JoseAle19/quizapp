@@ -4,6 +4,7 @@ import { CountdownTimer } from "../components/CounterTime";
 import "../css/DoingTest.css";
 import { hookDoingtest } from "../hooks/hookDoingtest";
 import { urlProduccionApi } from "../../../Api/QuizApi";
+import { socket } from "../../../socket";
 
 export const DoingTest = () => {
   // Metodo para verificiar si estas en produccion o local
@@ -11,10 +12,8 @@ export const DoingTest = () => {
     urlProduccionApi === "https://apiquizapp-production.up.railway.app/";
 
     if (urlProduccionApi === "https://apiquizapp-production.up.railway.app/") {
-      console.log("estas en produccion");
       return question.answers.answers;
     } else {
-      console.log("estas en local");
       return JSON.parse(question.answers).answers;
     }
   };
@@ -23,15 +22,14 @@ export const DoingTest = () => {
     user,
     dispatch,
     tests,
-    seconstOrMinutes,
     seconstOrMinutesByTest,
     duration,
     id,
     selectedAnswers,
     setSelectedAnswers,
-    handleSelectAnswer,
     handleTimerEnd,
     confirmFinishTest,
+    responsesPerUsers,
   } = hookDoingtest();
 
   useEffect(() => {
@@ -72,7 +70,6 @@ export const DoingTest = () => {
     <main className="DoingTest-container">
       <div className="DoingTest-timeAndTile">
         <h1 className="DoingTest-title">Examen en curso</h1>
-        {/* <h2 className="DoingTest-time">{seconstOrMinutes(duration)}</h2> */}
         <CountdownTimer
           minutes={seconstOrMinutesByTest(duration).minutes}
           seconds={seconstOrMinutesByTest(duration).seconds}
@@ -92,18 +89,23 @@ export const DoingTest = () => {
                     type="radio"
                     name={dataQuestion.question}
                     value={answer.answer}
-                    onChange={(e) =>
-                      handleSelectAnswer(questionIndex, answer, e)
-                    }
+                    onChange={() => responsesPerUsers(questionIndex, answer)}
                   />
-                  <label className="DoingTest-desRespuesta" >{answer.answer}</label>
+                  <label className="DoingTest-desRespuesta">
+                    {answer.answer}
+                  </label>
                 </div>
               ))}
               <hr />
             </div>
           ))}
       </div>
-      <button className="DoingTest-buttonFinish" onClick={() => confirmFinishTest()}>Terminar</button>
+      <button
+        className="DoingTest-buttonFinish"
+        onClick={() => confirmFinishTest()}
+      >
+        Terminar
+      </button>
     </main>
   );
 };
