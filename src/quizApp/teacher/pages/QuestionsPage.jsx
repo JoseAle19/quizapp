@@ -23,13 +23,13 @@ export const QuestionsPage = () => {
 return (
     <>
       <div className="card_questionpage-contendor">
-        <div className="card_questionpage-filt_title">
+        <div className="card_questionpage-filt_title justify-content-around ">
           <DropDownButton
             changeInputs={changeInputs}
             categories={categories}
             label={"Todas las preguntas"}
           />
-          <h1>Todas las preguntas</h1>
+          <h1 >Todas las preguntas</h1>
         </div>
         {questions !== undefined? (
           <CardDataQuestions

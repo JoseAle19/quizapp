@@ -100,7 +100,7 @@ export const useForms = (initialForm = {}) => {
 
   //  Modal para actualizar preguntas
 
-  const isEmpyUpateAnswer = (index) => {
+  const isEmpyUpdateAnswer = (index) => {
     return (
       modalInfo.answers && JSON.parse(modalInfo.answers).answers[index].answer
     );
@@ -162,7 +162,7 @@ export const useForms = (initialForm = {}) => {
     openModal,
     afterOpenModal,
     modalIsOpen,
-    isEmpyUpateAnswer,
+    isEmpyUpdateAnswer,
     modalInfo,
     addValueModal,
 

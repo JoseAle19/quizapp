@@ -1,10 +1,11 @@
-// Dependencias ecternas
+// Dependencias externas
 import Modal from "react-modal";
 import { useState } from "react";
 import "../css/CardQuestionUpdate.css";
 import { CardQuestions } from "./CardQuestions";
 import { useForms } from "../hooks/useForms";
 import { urlProduccionApi } from "../../../Api/QuizApi";
+
 const modalCustomStyles = {
   content: {
     top: "50%",
@@ -33,15 +34,15 @@ const initialState = {
 };
 
 export const CardDataQuestions = ({ question, stateQuestion }) => {
-  // Estas en produccion
+  // Estás en producción
   const isProductionOrLocal = (question) => {
     urlProduccionApi === "https://apiquizapp-production.up.railway.app/";
 
     if (urlProduccionApi === "https://apiquizapp-production.up.railway.app/") {
-      // console.log("estas en produccion");
+      // console.log("estás en producción");
       return question.answers.answers;
     } else {
-      // console.log("estas en local");
+      // console.log("estás en local");
       return JSON.parse(question.answers).answers;
     }
   };
@@ -56,7 +57,7 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
     openModal,
     afterOpenModal,
     modalIsOpen,
-    isEmpyUpateAnswer,
+    isEmpyUpdateAnswer, // Corregido: isEmpyUpateAnswer -> isEmpyUpdateAnswer
     modalInfo,
     addValueModal,
     deleteQuestion,
@@ -66,19 +67,19 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
   const answers = {
     answers: [
       {
-        answer: r1.length <= 0 ? isEmpyUpateAnswer(0) : r1,
+        answer: r1.length <= 0 ? isEmpyUpdateAnswer(0) : r1, // Corregido: isEmpyUpateAnswer -> isEmpyUpdateAnswer
         correct: s1,
       },
       {
-        answer: r2.length <= 0 ? isEmpyUpateAnswer(1) : r2,
+        answer: r2.length <= 0 ? isEmpyUpdateAnswer(1) : r2, // Corregido: isEmpyUpateAnswer -> isEmpyUpdateAnswer
         correct: s2,
       },
       {
-        answer: r3.length <= 0 ? isEmpyUpateAnswer(2) : r3,
+        answer: r3.length <= 0 ? isEmpyUpdateAnswer(2) : r3, // Corregido: isEmpyUpateAnswer -> isEmpyUpdateAnswer
         correct: s3,
       },
       {
-        answer: r4.length <= 0 ? isEmpyUpateAnswer(3) : r4,
+        answer: r4.length <= 0 ? isEmpyUpdateAnswer(3) : r4, // Corregido: isEmpyUpateAnswer -> isEmpyUpdateAnswer
         correct: s4,
       },
     ],
@@ -91,8 +92,8 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
           <div key={index} className="card_questionpage-card">
             <div className="card_questionpage_menutop">
               <div className="card_questionpage-menuleft">
-                <img src="../../../public/icon-question.png" />
-                <p>pregunta {index + 1}</p>
+                <img src="../../../public/icon-question.png" alt="question-icon" />
+                <p className="text-white">pregunta {index + 1}</p>
               </div>
               <div className="card_questionpage-menuright">
                 <img
@@ -107,18 +108,18 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
                 />
                 <Modal
                   isOpen={modalIsOpen}
-                  onafterOpen={afterOpenModal}
+                  onAfterOpen={afterOpenModal} // Corregido: onafterOpen -> onAfterOpen
                   onRequestClose={closeModal}
                   style={modalCustomStyles}
                 >
                   <div>
-                    {/*DAtos del input  */}
+                    {/* Datos del input */}
                     <div className="d-flex m-2">
                       <input
                         name="question"
                         onChange={changeInputs}
                         value={q}
-                        className="form-control border border-primary border-2 border-top-0 border-end-0 border-start-0 "
+                        className="form-control border border-primary border-2 border-top-0 border-end-0 border-start-0"
                         type="text"
                         placeholder={modalInfo.question}
                       />
@@ -135,7 +136,7 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
                     </div>
                     {/* Termina los datos del input */}
 
-                    {/* DAtos del modal  */}
+                    {/* Datos del modal */}
                     <CardQuestions
                       name={"r1"}
                       changeInputs={changeInputs}
@@ -183,7 +184,7 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
                     />
                     {/* Termina los datos del modal */}
                     <button
-                      className="btn btn-primary mt-3 mb-3 w-100 "
+                      className="btn btn-primary mt-3 mb-3 w-100"
                       onClick={() => {
                         const answersIndex = JSON.stringify(answers);
                         const descriptionQuestion =
@@ -244,7 +245,7 @@ export const CardDataQuestions = ({ question, stateQuestion }) => {
 
             <div className="card_questionpage-options">
               <p>Tiempo: {question.timeQ}s</p>
-              <p>Diciplina {question.description}</p>
+              <p>Disciplina: {question.description}</p> {/* Corregido: Disiplina -> Disciplina */}
             </div>
           </div>
         );

@@ -3,12 +3,13 @@ import "../css/CreateTest.css";
 import "animate.css";
 export const AddQuestionTest = ({ questions, add, exist }) => {
   return (
-    <div className="CreateTest_manual animate__animated animate__fadeInLeft">
+    <div className="CreateTest_manual animate__animated animate__fadeInLeft ">
       {questions.map((question) => {
         return (
-          <div className="CreateTest_manual_textButton" key={question.id_Q}>
+          <div className="CreateTest_manual_textButton  " key={question.id_Q}>
             <span> {question.question}</span>
             <button
+            className="btn btn-success"
               disabled={exist(question.id_Q) ? true : false}
               onClick={() => {
                 add(question);

@@ -1,86 +1,47 @@
-import { useEffect} from "react";
-// importaciones de redux
-import { useDispatch, useSelector } from "react-redux";
-// Slice de test para obtener los examenes
-import { getTest } from "../../../store/slices/testSlice/thunks";
-// custom hooks convertir json
-import { custom_hook_jsons } from "../../global_hooks/custom_hook_jsons";
-// Componentes es el de cargando
-import { Loading } from "../../../ui/components/Loading";
+
 //UseNavigate
-import { useNavigate } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 
 
-// Alertas
-import Swal from "sweetalert2";
+// Componeneys
+import { CreateQuestion } from "../../teacher/pages/CreateQuestion";
+import { NavBar } from "../components/NavBar";
+import { ViewTests } from "../components/ViewTests";
+import { CreateTest, QuestionsPage } from "../../teacher/pages";
+import { useSelector } from "react-redux";
 export const AdminDashBoardPage = () => {
-  const { tests, isLoading } = useSelector((state) => state.test);
-  const dispatch = useDispatch();
-  // Navigate
-  const  navigate  = useNavigate();
-  useEffect(() => {
-    dispatch(getTest(2023));
-   
-  }, []);
-  // CustomHook para parsear jsons
-  const { getStorage, parseJson } = custom_hook_jsons();
-
-//? Alerta para que aun no muestre el examen
-  const alertForTest = () => {
-    Swal.fire({
-      title: "El examen aun no esta disponible",
-      text: "El examen aun no esta disponible",
-      icon: "warning",
-      confirmButtonText: "Ok",
-    });
-  }
+  const { user } = useSelector((state) => state.auth);
 
 
-  return (
-    <>
-      <div className="">
-        <h1>Mostrar el examen</h1>
-        
-        {isLoading ? (
-          <Loading />
-        ) : tests.test?.length < 1 ? (
-          <h1>No hay examenes previos</h1>
-        ) : (
-          tests.test?.map((test, index) => {
-            return (
-              <div key={index} className="Leadertest-test-container">
-                <p className="Leadertest-test-name">
-                  Nombre del examen {test.name}
-                </p>
+const WelcomeUser = () =>{
+return(
+  <>
+ <div className="container">
+  <div className="row mt-5">
+    <div className="col-md-6 offset-md-3 text-center">
+      <h1 className="display-4">Hola, bienvenido {user.name}</h1>
+    </div>
+  </div>
+</div>
+  </>
+)
+}
+return (
+  <>
+    <div className= " z-3 position-fixed   w-100 bg-primary p-2">
+      <NavBar />
+    </div>
+    <div className="pt-5  ">
+      <Routes>
+        <Route path="/" element={<WelcomeUser />} />
+        <Route path="/create-question" element={<CreateQuestion />} />
+        <Route path="/questions" element={<QuestionsPage />} />
+        <Route path="/view-test" element={<ViewTests />} />
+        <Route path="/create-test" element={<CreateTest />} />
+      </Routes>
+    </div>
+  </>
+);
 
-                {test.id == parseJson(getStorage("Idtest"))?.id ? (
-                  <CountdownTimer
-                    minutes={seconstOrMinutesByTest(test.duration).minutes}
-                    seconds={seconstOrMinutesByTest(test.duration).seconds}
-                    onTimerEnd={handleTimerEnd}
-                  />
-                ) : (
-                  <p className="Leadertest-test-duration">
-                    Duracion {test.duration} minutos
-                  </p>
-                )}
 
-                <p className="Leadertest-test-year">
-                  Año del examen {test.year}
-                </p>
-
-                <button 
-                onClick={() => {
-                     // alertForTest()
-                  // navigate(`/questions-test/${test.id}`)
-                    navigate(`/grafics/${test.id}/${test.duration}`)
-                }}
-                className="Leadertest-btn">Ver examen</button>
-              </div>
-            );
-          })
-        )}
-      </div>
-    </>
-  );
 };

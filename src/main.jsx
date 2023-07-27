@@ -4,12 +4,12 @@ import ReactDOM from "react-dom/client";
 // Mis dependencias
 import { QuizApp } from "./QuizApp";
 // Dependencias externas
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <QuizApp />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

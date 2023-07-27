@@ -36,6 +36,8 @@
 }
 
 .CreateTest_stateTets {
+    height: 200px;
+    overflow: auto ;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -89,6 +91,8 @@
 
 /* Estilos de para componente de agregar preguntas manualmente */
 .CreateTest_manual {
+    overflow-y: auto;
+    height: 200px;
     margin: 20px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -98,7 +102,8 @@
 
 /* Separar el la descripcion del boton */
 .CreateTest_manual_textButton {
-    padding: 5px;
+    margin: 5px;
+    align-items: center;
     display: flex;
     justify-content: space-between;
 }

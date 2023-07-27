@@ -15,7 +15,7 @@ export const NavTeacher = () => {
           <div className="nav-teacher-links">
             <Link to={"/teacher-question"}>Crear pregunta</Link>
             <Link to={"/teacher-getquestions"}>Todas las preguntas</Link>
-            <Link to={"/create-test"}>Crear un examen</Link>
+            {/* <Link to={"/create-test"}>Crear un examen</Link> */}
         
           </div>
         </div>
